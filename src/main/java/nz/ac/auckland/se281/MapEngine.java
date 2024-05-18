@@ -13,11 +13,7 @@ import java.util.Set;
 public class MapEngine {
   List<Country> countryList = new LinkedList<>();
   boolean validCountry = false;
-  boolean validCountryStart = false;
-  boolean validCountryEnd = false;
   MapGraph graph = new MapGraph();
-  int fee = 0;
-  Set<String> hashSet = new LinkedHashSet<>();
 
   public MapEngine() {
     // add other code here if you want
@@ -63,6 +59,8 @@ public class MapEngine {
   /** this method is invoked when the user run the command route. */
   public void showRoute() {
     List<Country> path = new ArrayList<>();
+    int fee = 0;
+    Set<String> hashSet = new LinkedHashSet<>();
 
     String countryStart;
     String countryEnd;
@@ -118,6 +116,7 @@ public class MapEngine {
       fee += Integer.valueOf(country.getTax());
       hashSet.add(country.getContinent());
     }
+
     fee -= Integer.valueOf(startCountry.getTax());
 
     StringBuilder stringCountry = new StringBuilder();
@@ -130,10 +129,28 @@ public class MapEngine {
       stringCountry.append(", ");
     }
 
+    int count = 0;
+    for (String continent : hashSet) {
+      if (count < hashSet.size() - 1) {
+        stringContinent.append(continent);
+        stringContinent.append(", ");
+      }
+      count++;
+    }
+
     stringCountry.append(path.get(path.size() - 1).getCountry());
     stringCountry.append("]");
 
+    String lastContinent = null;
+    for (String continent : hashSet) {
+      lastContinent = continent;
+    }
+
+    stringContinent.append(lastContinent);
+    stringContinent.append("]");
+
     MessageCli.ROUTE_INFO.printMessage(stringCountry.toString());
+    MessageCli.CONTINENT_INFO.printMessage(stringContinent.toString());
   }
 
   public void findCountry(String countryInput) {
