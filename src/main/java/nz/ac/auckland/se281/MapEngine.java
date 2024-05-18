@@ -28,6 +28,7 @@ public class MapEngine {
 
   /** this method is invoked when the user run the command info-country. */
   public void showInfoCountry() {
+    MessageCli.INSERT_COUNTRY.printMessage();
     String country = Utils.scanner.nextLine();
     country = Utils.capitalizeFirstLetterOfEachWord(country);
 
