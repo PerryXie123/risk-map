@@ -2,10 +2,12 @@ package nz.ac.auckland.se281;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
+import java.util.Set;
 
 /** This class is the main entry point. */
 public class MapEngine {
@@ -15,6 +17,7 @@ public class MapEngine {
   boolean validCountryEnd = false;
   MapGraph graph = new MapGraph();
   int fee = 0;
+  Set<String> hashSet = new LinkedHashSet<>();
 
   public MapEngine() {
     // add other code here if you want
@@ -106,14 +109,31 @@ public class MapEngine {
       }
     }
 
-    if(countryStart.equals(countryEnd)){
+    if (countryStart.equals(countryEnd)) {
       MessageCli.NO_CROSSBORDER_TRAVEL.printMessage();
       return;
     }
-
     path = breadthFirstTraversal(startCountry, endCountry);
+    for (Country country : path) {
+      fee += Integer.valueOf(country.getTax());
+      hashSet.add(country.getContinent());
+    }
+    fee -= Integer.valueOf(startCountry.getTax());
 
+    StringBuilder stringCountry = new StringBuilder();
+    StringBuilder stringContinent = new StringBuilder();
+    stringCountry.append("[");
+    stringContinent.append("[");
 
+    for (int i = 0; i < path.size() - 1; i++) {
+      stringCountry.append(path.get(i).getCountry());
+      stringCountry.append(", ");
+    }
+
+    stringCountry.append(path.get(path.size() - 1).getCountry());
+    stringCountry.append("]");
+
+    MessageCli.ROUTE_INFO.printMessage(stringCountry.toString());
   }
 
   public void findCountry(String countryInput) {
@@ -160,6 +180,6 @@ public class MapEngine {
       }
     }
 
-    return new ArrayList<>(); // Return an empty list if no path found
+    return new ArrayList<>();
   }
 }
