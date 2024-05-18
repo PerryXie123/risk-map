@@ -21,6 +21,8 @@ public class MapEngine {
       Country countryInstance = new Country(countryInfo[0], countryInfo[1], countryInfo[2]);
       countryList.add(countryInstance);
     }
+    MapGraph graph = new MapGraph();
+    graph.loadCountries(adjacencies, countryList);
   }
 
   /** this method is invoked when the user run the command info-country. */
