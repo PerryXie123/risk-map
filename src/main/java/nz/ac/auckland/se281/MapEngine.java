@@ -59,7 +59,7 @@ public class MapEngine {
   /** this method is invoked when the user run the command route. */
   public void showRoute() {
     List<Country> path = new ArrayList<>();
-    int fee = 0;
+    Integer fee = 0;
     Set<String> hashSet = new LinkedHashSet<>();
 
     String countryStart;
@@ -151,6 +151,7 @@ public class MapEngine {
 
     MessageCli.ROUTE_INFO.printMessage(stringCountry.toString());
     MessageCli.CONTINENT_INFO.printMessage(stringContinent.toString());
+    MessageCli.TAX_INFO.printMessage(fee.toString());
   }
 
   public void findCountry(String countryInput) {
