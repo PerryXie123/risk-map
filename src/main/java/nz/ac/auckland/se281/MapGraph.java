@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MapGraph {
-  public Map<Country, List<Country>> adjCountries;
+  Map<Country, List<Country>> adjCountries;
 
   public MapGraph() {
     this.adjCountries = new HashMap<>();

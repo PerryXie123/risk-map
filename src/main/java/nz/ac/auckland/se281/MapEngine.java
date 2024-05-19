@@ -11,9 +11,9 @@ import java.util.Set;
 
 /** This class is the main entry point. */
 public class MapEngine {
-  List<Country> countryList = new LinkedList<>();
-  boolean validCountry = false;
-  MapGraph graph = new MapGraph();
+  private List<Country> countryList = new LinkedList<>();
+  private boolean validCountry = false;
+  private MapGraph graph = new MapGraph();
 
   public MapEngine() {
     // add other code here if you want
@@ -40,11 +40,12 @@ public class MapEngine {
 
     while (validCountry == false) {
       try {
+        country = Utils.capitalizeFirstLetterOfEachWord(country);
         findCountry(country);
       } catch (InvalidCountryException e) {
         MessageCli.INVALID_COUNTRY.printMessage(country);
         country = Utils.scanner.nextLine();
-        country = Utils.capitalizeFirstLetterOfEachWord(country);
+        // country = Utils.capitalizeFirstLetterOfEachWord(country);
       }
     }
     validCountry = false;
@@ -74,11 +75,12 @@ public class MapEngine {
 
     while (validCountry == false) {
       try {
+        countryStart = Utils.capitalizeFirstLetterOfEachWord(countryStart);
         findCountry(countryStart);
       } catch (InvalidCountryException e) {
         MessageCli.INVALID_COUNTRY.printMessage(countryStart);
         countryStart = Utils.scanner.nextLine();
-        countryStart = Utils.capitalizeFirstLetterOfEachWord(countryStart);
+        // countryStart = Utils.capitalizeFirstLetterOfEachWord(countryStart);
       }
     }
 
@@ -90,11 +92,12 @@ public class MapEngine {
 
     while (validCountry == false) {
       try {
+        countryEnd = Utils.capitalizeFirstLetterOfEachWord(countryEnd);
         findCountry(countryEnd);
       } catch (InvalidCountryException e) {
         MessageCli.INVALID_COUNTRY.printMessage(countryEnd);
         countryEnd = Utils.scanner.nextLine();
-        countryEnd = Utils.capitalizeFirstLetterOfEachWord(countryEnd);
+        // countryEnd = Utils.capitalizeFirstLetterOfEachWord(countryEnd);
       }
     }
 
@@ -111,7 +114,7 @@ public class MapEngine {
       MessageCli.NO_CROSSBORDER_TRAVEL.printMessage();
       return;
     }
-    path = breadthFirstTraversal(startCountry, endCountry);
+    path = countryShortestPath(startCountry, endCountry);
     for (Country country : path) {
       fee += Integer.valueOf(country.getTax());
       hashSet.add(country.getContinent());
@@ -169,7 +172,7 @@ public class MapEngine {
     }
   }
 
-  public List<Country> breadthFirstTraversal(Country root, Country target) {
+  public List<Country> countryShortestPath(Country root, Country target) {
     List<Country> visited = new ArrayList<>();
     Queue<Country> queue = new LinkedList<>();
     Map<Country, Country> previous = new HashMap<>();
