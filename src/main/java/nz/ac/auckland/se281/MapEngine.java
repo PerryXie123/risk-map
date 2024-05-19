@@ -114,7 +114,7 @@ public class MapEngine {
       MessageCli.NO_CROSSBORDER_TRAVEL.printMessage();
       return;
     }
-    path = countryShortestPath(startCountry, endCountry);
+    path = findingShortestPath(startCountry, endCountry);
     for (Country country : path) {
       fee += Integer.valueOf(country.getTax());
       hashSet.add(country.getContinent());
@@ -172,7 +172,7 @@ public class MapEngine {
     }
   }
 
-  public List<Country> countryShortestPath(Country root, Country target) {
+  public List<Country> findingShortestPath(Country root, Country target) {
     List<Country> visited = new ArrayList<>();
     Queue<Country> queue = new LinkedList<>();
     Map<Country, Country> previous = new HashMap<>();
