@@ -70,7 +70,6 @@ public class MapEngine {
   /** this method is invoked when the user run the command route. */
   public void showRoute() {
     // Initialises the needed variables
-    List<Country> path = new ArrayList<>();
     Integer fee = 0;
     Set<String> hashSet = new LinkedHashSet<>();
 
@@ -133,7 +132,7 @@ public class MapEngine {
     }
 
     // Finds the shortest path between two countries using BFS
-    path = findingShortestPath(startCountry, endCountry);
+    List<Country> path = findingShortestPath(startCountry, endCountry);
     for (Country country : path) {
       // Adds the fee up
       fee += Integer.valueOf(country.getTax());
@@ -184,7 +183,7 @@ public class MapEngine {
   }
 
   /**
-   * This method loops through the valid country list to check if the user input is valid
+   * This method loops through the valid country list to check if the user input is valid.
    *
    * @param countryInput the name of a country which needs to be validified
    */
@@ -207,7 +206,7 @@ public class MapEngine {
 
   /**
    * This method uses BFS to search through the adjacent countries list and finds the shortest path
-   * between two countries
+   * between two countries.
    *
    * @param root the starting country
    * @param target the ending country

@@ -1,12 +1,13 @@
 package nz.ac.auckland.se281;
 
+/** Country class which stores country data. */
 public class Country {
   private String country;
   private String continent;
   private String tax;
 
   /**
-   * Constructor method for country
+   * Constructor method for country.
    *
    * @param country string of the country
    * @param continent string of the continent
@@ -20,7 +21,7 @@ public class Country {
   }
 
   /**
-   * Getter method for the country string
+   * Getter method for the country string.
    *
    * @return the string of the country
    */
@@ -30,7 +31,7 @@ public class Country {
   }
 
   /**
-   * Getter method for the continent string
+   * Getter method for the continent string.
    *
    * @return the string of the continent
    */
@@ -40,7 +41,7 @@ public class Country {
   }
 
   /**
-   * Getter method for the tax string
+   * Getter method for the tax string.
    *
    * @return the string of the tax
    */

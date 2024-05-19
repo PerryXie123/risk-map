@@ -5,17 +5,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/** MapGraph class which stores the adjacent data. */
 public class MapGraph {
   private Map<Country, List<Country>> adjCountries;
 
-  /** The constructor method for the adjacent map */
+  /** The constructor method for the adjacent map. */
   public MapGraph() {
     // Sets the adjacent countries map
     this.adjCountries = new HashMap<>();
   }
 
   /**
-   * This method adds a country as a node
+   * This method adds a country as a node.
    *
    * @param node the country to be added
    */
@@ -25,7 +26,7 @@ public class MapGraph {
   }
 
   /**
-   * This method adds an adjacency between two countries
+   * This method adds an adjacency between two countries.
    *
    * @param node1 the first country
    * @param node2 the second country
@@ -39,7 +40,7 @@ public class MapGraph {
   }
 
   /**
-   * This method loads the data into a hashmap of its adjacencies
+   * This method loads the data into a hashmap of its adjacencies.
    *
    * @param countryAdj list of adjacent countries
    * @param countryData list of the country data
@@ -72,8 +73,9 @@ public class MapGraph {
     }
   }
 
-  /**Getter method for the adjacent countries
-   * 
+  /**
+   * Getter method for the adjacent countries.
+   *
    * @return the map of the adjacent countries
    */
   public Map<Country, List<Country>> getAdj() {
