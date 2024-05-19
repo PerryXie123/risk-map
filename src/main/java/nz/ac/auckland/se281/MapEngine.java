@@ -35,7 +35,7 @@ public class MapEngine {
     graph.loadCountries(adjacencies, countryList);
   }
 
-  /** this method is invoked when the user run the command info-country. */
+  /** Outputs country information. */
   public void showInfoCountry() {
     // Prints input message
     // Initialises the neede variables
@@ -45,7 +45,7 @@ public class MapEngine {
     String country = Utils.scanner.nextLine();
     country = Utils.capitalizeFirstLetterOfEachWord(country);
 
-    // While the country is invalid, keeps asking for another input
+    // Keeps asking for input
     while (!validCountry) {
       try {
         country = Utils.capitalizeFirstLetterOfEachWord(country);
