@@ -172,19 +172,21 @@ public class MapEngine {
   public List<Country> breadthFirstTraversal(Country root, Country target) {
     List<Country> visited = new ArrayList<>();
     Queue<Country> queue = new LinkedList<>();
-    Map<Country, Country> predecessors = new HashMap<>();
+    Map<Country, Country> previous = new HashMap<>();
 
     queue.add(root);
     visited.add(root);
-    predecessors.put(root, null);
+    previous.put(root, null);
 
     while (!queue.isEmpty()) {
       Country current = queue.poll();
 
       if (current.equals(target)) {
         List<Country> path = new LinkedList<>();
-        for (Country at = target; at != null; at = predecessors.get(at)) {
-          path.add(0, at);
+        for (Country currentCountry = target;
+            currentCountry != null;
+            currentCountry = previous.get(currentCountry)) {
+          path.add(0, currentCountry);
         }
         return path;
       }
@@ -193,7 +195,7 @@ public class MapEngine {
         if (!visited.contains(neighbor)) {
           queue.add(neighbor);
           visited.add(neighbor);
-          predecessors.put(neighbor, current);
+          previous.put(neighbor, current);
         }
       }
     }
