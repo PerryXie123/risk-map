@@ -194,7 +194,7 @@ public class MapEngine {
         return path;
       }
 
-      for (Country neighbor : graph.adjCountries.get(current)) {
+      for (Country neighbor : graph.getAdj().get(current)) {
         if (!visited.contains(neighbor)) {
           queue.add(neighbor);
           visited.add(neighbor);

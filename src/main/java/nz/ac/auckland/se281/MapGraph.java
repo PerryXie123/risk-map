@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MapGraph {
-  Map<Country, List<Country>> adjCountries;
+  private Map<Country, List<Country>> adjCountries;
 
   public MapGraph() {
     this.adjCountries = new HashMap<>();
@@ -42,5 +42,9 @@ public class MapGraph {
         addEdge(countryOriginal, adjacentCountry);
       }
     }
+  }
+
+  public Map<Country, List<Country>> getAdj(){
+    return adjCountries;
   }
 }
