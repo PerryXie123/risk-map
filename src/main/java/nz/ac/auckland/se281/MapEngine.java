@@ -38,14 +38,14 @@ public class MapEngine {
     String country = Utils.scanner.nextLine();
     country = Utils.capitalizeFirstLetterOfEachWord(country);
 
-    while (validCountry == false) {
+    while (!validCountry) {
       try {
         country = Utils.capitalizeFirstLetterOfEachWord(country);
         findCountry(country);
+        validCountry = true;
       } catch (InvalidCountryException e) {
         MessageCli.INVALID_COUNTRY.printMessage(country);
         country = Utils.scanner.nextLine();
-        // country = Utils.capitalizeFirstLetterOfEachWord(country);
       }
     }
     validCountry = false;
@@ -73,14 +73,14 @@ public class MapEngine {
     countryStart = Utils.scanner.nextLine();
     countryStart = Utils.capitalizeFirstLetterOfEachWord(countryStart);
 
-    while (validCountry == false) {
+    while (!validCountry) {
       try {
         countryStart = Utils.capitalizeFirstLetterOfEachWord(countryStart);
         findCountry(countryStart);
+        validCountry = true;
       } catch (InvalidCountryException e) {
         MessageCli.INVALID_COUNTRY.printMessage(countryStart);
         countryStart = Utils.scanner.nextLine();
-        // countryStart = Utils.capitalizeFirstLetterOfEachWord(countryStart);
       }
     }
 
@@ -90,14 +90,14 @@ public class MapEngine {
     countryEnd = Utils.scanner.nextLine();
     countryEnd = Utils.capitalizeFirstLetterOfEachWord(countryEnd);
 
-    while (validCountry == false) {
+    while (!validCountry) {
       try {
         countryEnd = Utils.capitalizeFirstLetterOfEachWord(countryEnd);
         findCountry(countryEnd);
+        validCountry = true;
       } catch (InvalidCountryException e) {
         MessageCli.INVALID_COUNTRY.printMessage(countryEnd);
         countryEnd = Utils.scanner.nextLine();
-        // countryEnd = Utils.capitalizeFirstLetterOfEachWord(countryEnd);
       }
     }
 
