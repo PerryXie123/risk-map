@@ -9,9 +9,9 @@ public class Country {
   /**
    * Constructor method for country.
    *
-   * @param country string of the country
-   * @param continent string of the continent
-   * @param tax string of the tax
+   * @param country string of the country.
+   * @param continent string of the continent.
+   * @param tax string of the tax.
    */
   public Country(String country, String continent, String tax) {
     // Sets the country, continent, and tax of a country
@@ -23,7 +23,7 @@ public class Country {
   /**
    * Getter method for the country string.
    *
-   * @return the string of the country
+   * @return the string of the country.
    */
   public String getCountry() {
     // Returns country
@@ -33,7 +33,7 @@ public class Country {
   /**
    * Getter method for the continent string.
    *
-   * @return the string of the continent
+   * @return the string of the continent.
    */
   public String getContinent() {
     // Returns continent
@@ -43,7 +43,7 @@ public class Country {
   /**
    * Getter method for the tax string.
    *
-   * @return the string of the tax
+   * @return the string of the tax.
    */
   public String getTax() {
     // Returns tax

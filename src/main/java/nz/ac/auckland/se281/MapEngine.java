@@ -185,7 +185,7 @@ public class MapEngine {
   /**
    * This method loops through the valid country list to check if the user input is valid.
    *
-   * @param countryInput the name of a country which needs to be validified
+   * @param countryInput the name of a country which needs to be validified.
    */
   public void findCountry(String countryInput) {
     // Sees if the country is a valid country and is in the list
@@ -208,9 +208,9 @@ public class MapEngine {
    * This method uses BFS to search through the adjacent countries list and finds the shortest path
    * between two countries.
    *
-   * @param root the starting country
-   * @param target the ending country
-   * @return a list of path of the countries
+   * @param root the starting country.
+   * @param target the ending country.
+   * @return a list of path of the countries.
    */
   public List<Country> findingShortestPath(Country root, Country target) {
     // Initialises starting variables

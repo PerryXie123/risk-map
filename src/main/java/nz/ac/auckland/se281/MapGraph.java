@@ -18,7 +18,7 @@ public class MapGraph {
   /**
    * This method adds a country as a node.
    *
-   * @param node the country to be added
+   * @param node the country to be added.
    */
   public void addNode(Country node) {
     // Adds countries as nodes
@@ -28,8 +28,8 @@ public class MapGraph {
   /**
    * This method adds an adjacency between two countries.
    *
-   * @param node1 the first country
-   * @param node2 the second country
+   * @param node1 the first country.
+   * @param node2 the second country.
    */
   public void addEdge(Country node1, Country node2) {
     // Adds an edge between two different countries
@@ -42,8 +42,8 @@ public class MapGraph {
   /**
    * This method loads the data into a hashmap of its adjacencies.
    *
-   * @param countryAdj list of adjacent countries
-   * @param countryData list of the country data
+   * @param countryAdj list of adjacent countries.
+   * @param countryData list of the country data.
    */
   public void loadCountries(List<String> countryAdj, List<Country> countryData) {
     // Initialises the original and adjacent countries
@@ -76,7 +76,7 @@ public class MapGraph {
   /**
    * Getter method for the adjacent countries.
    *
-   * @return the map of the adjacent countries
+   * @return the map of the adjacent countries.
    */
   public Map<Country, List<Country>> getAdj() {
     // Returns the adjacent countries map
