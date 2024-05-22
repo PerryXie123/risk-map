@@ -26,7 +26,6 @@ public class Country {
    * @return the string of the country.
    */
   public String getCountry() {
-    // Returns country
     return country;
   }
 
@@ -36,7 +35,6 @@ public class Country {
    * @return the string of the continent.
    */
   public String getContinent() {
-    // Returns continent
     return continent;
   }
 
@@ -46,7 +44,6 @@ public class Country {
    * @return the string of the tax.
    */
   public String getTax() {
-    // Returns tax
     return tax;
   }
 }
