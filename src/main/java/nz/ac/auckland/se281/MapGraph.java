@@ -82,4 +82,8 @@ public class MapGraph {
     // Returns the adjacent countries map
     return adjCountries;
   }
+
+  public boolean hasEdge(Country node1, Country node2) {
+    return adjCountries.get(node1).contains(node2);
+  }
 }
