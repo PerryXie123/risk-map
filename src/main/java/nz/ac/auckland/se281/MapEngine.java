@@ -13,7 +13,6 @@ public class MapEngine {
   private List<Country> countryList = new LinkedList<>();
   private boolean validCountry = false;
   private MapGraph graph = new MapGraph();
-  private List<String> adjacent;
 
   public MapEngine() {
     loadMap(); // keep this method invocation
@@ -24,7 +23,6 @@ public class MapEngine {
     // Initialises the lists and whatnot needed
     List<String> countries = Utils.readCountries();
     List<String> adjacencies = Utils.readAdjacencies();
-    adjacent = adjacencies;
     // Seperated each line in the list by its comma
     for (String country : countries) {
       String[] countryInfo = country.split(",");
