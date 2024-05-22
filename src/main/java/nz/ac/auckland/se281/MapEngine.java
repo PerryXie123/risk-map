@@ -186,59 +186,6 @@ public class MapEngine {
     MessageCli.ROUTE_INFO.printMessage(stringCountry.toString());
     MessageCli.CONTINENT_INFO.printMessage(stringContinent.toString());
     MessageCli.TAX_INFO.printMessage(fee.toString());
-
-    // ///////////////////////////////////////////////
-    // // Finds the shortest path between two countries using BFS
-    // List<Country> path = findingShortestPath(startCountry, endCountry);
-    // for (Country country : path) {
-    //   // Adds the fee up
-    //   fee += Integer.valueOf(country.getTax());
-    //   hashSet.add(country.getContinent());
-    // }
-
-    // // Removes the fee of the starting country
-    // fee -= Integer.valueOf(startCountry.getTax());
-
-    // // Uses stringbuilder to append all the countries and continents visited
-    // StringBuilder stringCountry = new StringBuilder();
-    // StringBuilder stringContinent = new StringBuilder();
-    // stringCountry.append("[");
-    // stringContinent.append("[");
-
-    // // Loops through the past list with all countries visited
-    // for (int i = 0; i < path.size() - 1; i++) {
-    //   stringCountry.append(path.get(i).getCountry());
-    //   stringCountry.append(", ");
-    // }
-
-    // // Loops through the list of all continents visited
-    // int count = 0;
-    // for (String continent : hashSet) {
-    //   if (count < hashSet.size() - 1) {
-    //     stringContinent.append(continent);
-    //     stringContinent.append(", ");
-    //   }
-    //   count++;
-    // }
-
-    // // Appends the final country and continent
-    // stringCountry.append(path.get(path.size() - 1).getCountry());
-    // stringCountry.append("]");
-
-    // String lastContinent = null;
-    // for (String continent : hashSet) {
-    //   lastContinent = continent;
-    // }
-
-    // stringContinent.append(lastContinent);
-    // stringContinent.append("]");
-
-    // // Prints information for the countries, continents, and fee
-    // MessageCli.ROUTE_INFO.printMessage(stringCountry.toString());
-    // MessageCli.CONTINENT_INFO.printMessage(stringContinent.toString());
-    // MessageCli.TAX_INFO.printMessage(fee.toString());
-
-    // //////////////////////////////
   }
 
   /**
@@ -263,55 +210,6 @@ public class MapEngine {
     }
   }
 
-  // /**
-  //  * This method uses BFS to search through the adjacent countries list and finds the shortest
-  // path
-  //  * between two countries.
-  //  *
-  //  * @param root the starting country.
-  //  * @param target the ending country.
-  //  * @return a list of path of the countries.
-  //  */
-  // public List<Country> findingShortestPath(Country root, Country target) {
-  //   // Initialises starting variables
-  //   List<Country> visited = new ArrayList<>();
-  //   Queue<Country> queue = new LinkedList<>();
-  //   Map<Country, Country> previous = new HashMap<>();
-
-  //   // Adds the starting country to all lists
-  //   queue.add(root);
-  //   visited.add(root);
-  //   previous.put(root, null);
-
-  //   // Uses BFS to find the shortest path between two countries
-  //   // Loops while the queue of countries to check is not empty
-  //   while (!queue.isEmpty()) {
-  //     Country current = queue.poll();
-
-  //     if (current.equals(target)) {
-  //       List<Country> path = new LinkedList<>();
-  //       for (Country currentCountry = target;
-  //           currentCountry != null;
-  //           currentCountry = previous.get(currentCountry)) {
-  //         path.add(0, currentCountry);
-  //       }
-  //       // Returns the shortest path
-  //       return path;
-  //     }
-
-  //     // Gets the current shortest path
-  //     for (Country neighbor : graph.getAdj().get(current)) {
-  //       if (!visited.contains(neighbor)) {
-  //         queue.add(neighbor);
-  //         visited.add(neighbor);
-  //         previous.put(neighbor, current);
-  //       }
-  //     }
-  //   }
-  //   // Returns an empty array to prevent compiling errors
-  //   return new ArrayList<>();
-  // }
-
   public List<Country> findingShortestPath(Country root, Country target) {
     List<Country> visited = new ArrayList<>();
     Queue<Country> queue = new LinkedList<>();
@@ -335,83 +233,6 @@ public class MapEngine {
     Stack<Country> stack = new Stack<>();
     Country tempCountry = end;
     stack.push(end);
-    while (tempCountry != root) {
-      for (Country country : path) {
-        if (graph.hasEdge(country, end)) {
-          stack.push(country);
-          tempCountry = country;
-          break;
-        }
-      }
-      end = tempCountry;
-    }
-    return stack;
-  }
-
-  public Stack<Country> pathFinder2(Country root, Country end, List<Country> path) {
-    ArrayList<String[]> adjacentList = new ArrayList<String[]>();
-    Stack<Country> stack = new Stack<>();
-    Country tempCountry = end;
-    String[] countryListTemp = null;
-    stack.push(end);
-    for (String adjacent : adjacent) {
-      String[] parts = adjacent.split(",");
-      adjacentList.add(parts);
-    }
-
-    ArrayList<String[]> adjacentList2 = new ArrayList<String[]>();
-
-    for (String[] countryList : adjacentList) {
-      for (Country country : path) {
-        if ((countryList[0].equals(country.getCountry()))) {
-          adjacentList2.add(countryList);
-        }
-      }
-    }
-
-    while (tempCountry != root) {
-      for (String[] countryList : adjacentList2) {
-        if (countryList[0].equals(tempCountry.getCountry())) {
-          countryListTemp = countryList;
-        }
-      }
-      for (int i = 1; i < countryListTemp.length; i++) {
-        for (Country country : path) {
-          if (country.getCountry().equals(countryListTemp[i])) {
-            stack.push(country);
-            tempCountry = country;
-            break;
-          }
-        }
-      }
-      end = tempCountry;
-    }
-    return stack;
-  }
-
-  public Stack<Country> pathFinder3(Country root, Country end, List<Country> path) {
-    ArrayList<String[]> adjacentList = new ArrayList<String[]>();
-    Stack<Country> stack = new Stack<>();
-    Country tempCountry = end;
-    String[] countryListTemp = null;
-
-    stack.push(end);
-    for (String adjacent : adjacent) {
-      String[] parts = adjacent.split(",");
-      adjacentList.add(parts);
-    }
-
-    ArrayList<String[]> adjacentList2 = new ArrayList<String[]>();
-
-    for (String[] countryList : adjacentList) {
-      for (Country country : path) {
-        if ((countryList[0].equals(country.getCountry()))) {
-          adjacentList2.add(countryList);
-        }
-      }
-    }
-
-
     while (tempCountry != root) {
       for (Country country : path) {
         if (graph.hasEdge(country, end)) {

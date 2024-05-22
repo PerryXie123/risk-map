@@ -36,7 +36,6 @@ public class MapGraph {
     addNode(node1);
     addNode(node2);
     adjCountries.get(node1).add(node2);
-    adjCountries.get(node2).add(node1);
   }
 
   /**
