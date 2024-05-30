@@ -133,6 +133,8 @@ public class MapEngine {
       }
     }
 
+    validCountry = false;
+
     // Sets the country variables as the starting and ending country
     for (Country country : countryList) {
       if (countryStart.equals(country.getCountry())) {
